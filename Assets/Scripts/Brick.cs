@@ -5,8 +5,15 @@ using Zenject;
 
 public class Brick : MonoBehaviour
 {
+    private static readonly int Hit = Animator.StringToHash("hit");
+
+    
     [Inject]
     private GameController gameController;
+    
+    
+    [SerializeField]
+    private Animator animator;
     
     [SerializeField]
     private List<Sprite> sprites;
@@ -17,8 +24,10 @@ public class Brick : MonoBehaviour
     [SerializeField]
     private AudioClip impactSound;
 
+    
     private int health;
 
+    
     private int Health
     {
         get => health;
@@ -30,21 +39,17 @@ public class Brick : MonoBehaviour
         }
     }
     
+    
     void Start()
     {
         Health = sprites.Count;
         
         UpdateSprite();
     }
-    
-    void Update()
-    {
-        
-    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Damage();
+        gameController.QueueAction(Damage);
     }
 
     void Damage()
@@ -55,6 +60,10 @@ public class Brick : MonoBehaviour
         if (Health <= 0)
         {
             Destroy(gameObject);
+        }
+        else
+        {
+            animator.SetTrigger(Hit);
         }
     }
 
