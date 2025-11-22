@@ -43,6 +43,6 @@ public class Ball : MonoBehaviour
         if ((1 << other.gameObject.layer & wallsLayerMask ) != 0)
         {
             gameController.GlobalAudioSource.PlayOneShot(bounceSound, bounceSoundVolume);
-        } 
+        }
     }
 }
