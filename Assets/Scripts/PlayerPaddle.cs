@@ -18,6 +18,9 @@ public class PlayerPaddle : MonoBehaviour
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField]
+    private Transform spriteTransform;
+
     [FormerlySerializedAs("MinX")]
     [SerializeField]
     private float minX;
@@ -104,9 +107,9 @@ public class PlayerPaddle : MonoBehaviour
             tiltRangeMaxAngleDegrees, speed);
 
         targetAngle = -angle;
-        var currentAngle = body.rotation;
+        var currentAngle = spriteTransform.rotation.eulerAngles.z;
         currentAngle = Mathf.LerpAngle(targetAngle, currentAngle, Mathf.Exp(-tiltDamping * Time.deltaTime));
         
-        body.MoveRotation(currentAngle);
+        spriteTransform.rotation = Quaternion.Euler(0, 0, currentAngle);
     }
 }
