@@ -20,6 +20,9 @@ public class Brick : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+    
+    [SerializeField]
+    private ParticleSystem debrisParticleSystem;
 
     [SerializeField]
     private AudioClip impactSound;
@@ -56,9 +59,15 @@ public class Brick : MonoBehaviour
     {
         Health--;
         gameController.GlobalAudioSource.PlayOneShot(impactSound);
+        debrisParticleSystem.Play();
 
         if (Health <= 0)
         {
+            debrisParticleSystem.transform.parent = null;
+
+            var main = debrisParticleSystem.main;
+            main.stopAction = ParticleSystemStopAction.Destroy;
+            
             Destroy(gameObject);
         }
         else

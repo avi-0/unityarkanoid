@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 
 public class Ball : MonoBehaviour
@@ -24,10 +26,13 @@ public class Ball : MonoBehaviour
     
     [SerializeField]
     private float bounceDeviationAngle = 5f;
+
+    [SerializeField]
+    private float minAngleToXAxis = 5f;
     
     void Start()
     {
-        body.velocity = new Vector2(2, 1);
+        body.velocity = new Vector2(1, 1);
     }
 
     private void FixedUpdate()
@@ -40,7 +45,6 @@ public class Ball : MonoBehaviour
         if ((1 << other.gameObject.layer & wallsLayerMask ) != 0)
         {
             Bounced();
-            
         }
     }
 
@@ -48,7 +52,13 @@ public class Ball : MonoBehaviour
     {
         gameController.GlobalAudioSource.PlayOneShot(bounceSound, bounceSoundVolume);
 
-        var angle = Random.Range(-bounceDeviationAngle, bounceDeviationAngle);
-        body.velocity = Quaternion.AngleAxis(angle, Vector3.forward) * body.velocity;
+        // защита для случая, когда скорость почти горизонтальна и шарик очень долго скачет между стенами
+        var angleToX = Vector2.Angle(body.velocity, Vector2.right);
+        angleToX = Math.Min(angleToX, 180 - angleToX);
+        if (angleToX < minAngleToXAxis)
+        {
+            var angle = Random.Range(-bounceDeviationAngle, bounceDeviationAngle);
+            body.velocity = Quaternion.AngleAxis(angle, Vector3.forward) * body.velocity;
+        }
     }
 }

@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000131d7526
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1468,7 +1468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlobalAudioSource: {fileID: 637359263}
-  actionQueueCooldownFrames: 5
+  actionQueueCooldownFrames: 2
 --- !u!1001 &661324865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2027,7 +2027,8 @@ MonoBehaviour:
     m_Bits: 768
   bounceSound: {fileID: 8300000, guid: 90d8745529de09942852568866b91495, type: 3}
   bounceSoundVolume: 0.4
-  bounceDeviationAngle: 5
+  bounceDeviationAngle: 15
+  minAngleToXAxis: 5
 --- !u!1001 &1109603086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5082,10 +5083,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPaddle
       objectReference: {fileID: 0}
-    - target: {fileID: 2532782675208887143, guid: 6f51018e0a730df44993ac7a3b926cb2, type: 3}
-      propertyPath: customCollider
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8967463581213253454, guid: 6f51018e0a730df44993ac7a3b926cb2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5335,10 +5332,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.025000002
+    y: 0.025925925
+    width: 0.95000005
+    height: 0.94814813
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -5368,7 +5365,7 @@ Transform:
   m_GameObject: {fileID: 1732775381}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
