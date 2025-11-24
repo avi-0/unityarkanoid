@@ -31,25 +31,28 @@ public class PlayerPaddle : MonoBehaviour
 
     [FormerlySerializedAs("DefaultLength")]
     [SerializeField]
-    private float defaultLength = 2;
+    private float defaultLength = 2f;
+    
+    [SerializeField]
+    private float width = 1f;
 
     [SerializeField]
-    private float width = 1;
+    private float arcAngle = 15f;
 
     [SerializeField]
-    private float minLength = 1;
+    private float minLength = 1f;
 
     [FormerlySerializedAs("TiltRangeMaxSpeed")]
     [SerializeField]
-    private float tiltRangeMaxSpeed = 8;
+    private float tiltRangeMaxSpeed = 8f;
 
     [FormerlySerializedAs("TiltRangeMaxAngleDegrees")]
     [SerializeField]
-    private float tiltRangeMaxAngleDegrees = 30;
+    private float tiltRangeMaxAngleDegrees = 30f;
 
     [FormerlySerializedAs("TiltDamping")]
     [SerializeField]
-    private float tiltDamping = 8;
+    private float tiltDamping = 8f;
 
     private float length;
     private float targetAngle;
@@ -68,14 +71,15 @@ public class PlayerPaddle : MonoBehaviour
 
     private void CreateShape()
     {
+        var arcAngleRad = arcAngle * Mathf.Deg2Rad;
+        var radius = length / (2 * Mathf.Sin(arcAngleRad));
+        
         var vertices = new List<Vector2>();
         for (int i = 0; i <= colliderPoints; i++)
         {
-            var angle = Mathf.PI * (float)i / colliderPoints;
-            var vertex = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-            vertex.x *= Length / 2;
-            vertex.y *= width;
-            vertex.y -= width / 2;
+            var angle = 2 * arcAngleRad * (float)i / colliderPoints - arcAngleRad + Mathf.PI / 2;
+            var vertex = radius * new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+            vertex.y -= radius - width / 2;
             
             vertices.Add(vertex);
         }

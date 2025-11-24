@@ -83,6 +83,8 @@ MonoBehaviour:
   maxX: 8
   defaultLength: 2.5
   width: 0.5
+  arcAngle: 30
+  minLength: 1
   tiltRangeMaxSpeed: 24
   tiltRangeMaxAngleDegrees: 10
   tiltDamping: 8

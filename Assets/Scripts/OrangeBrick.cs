@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using Zenject;
 
 public class OrangeBrick : BaseBrick
 {
@@ -40,24 +39,35 @@ public class OrangeBrick : BaseBrick
             gameController.GlobalAudioSource.PlayOneShot(explosionSound, explosionSoundVolume);
         
             Physics2D.OverlapCollider(explosionAreaCollider, contactFilter, overlapColliderResults);
-            foreach (var collider in overlapColliderResults)
+            var bricks = overlapColliderResults
+                .Select(collider => collider.GetComponent<BaseBrick>())
+                .Where(brick => brick != null && brick != this)
+                .ToList();
+            
+            while (bricks.Count > 0)
             {
-                var brick = collider.GetComponent<BaseBrick>();
-                if (brick != null && brick != this)
+                var i = Random.Range(0, bricks.Count);
+                var brick = bricks[i];
+                
+                gameController.QueueAction(() =>
                 {
-                    gameController.QueueAction(() =>
+                    if (brick == null)
                     {
-                        if (brick == null)
-                        {
-                            return false;
-                        }
+                        return false;
+                    }
                     
-                        brick.Damage();
-                        return true;
-                    });
-                }
+                    brick.Damage();
+                    return true;
+                });
+
+                bricks.RemoveAt(i);
             }
         }
+    }
+
+    private void Explode()
+    {
+        
     }
 
     protected override void OnDestroyed()
