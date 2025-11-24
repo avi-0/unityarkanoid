@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreenBrick : BaseBrick
+public class PowerupBrick : BaseBrick
 {
     [SerializeField]
     private List<Powerup> possiblePowerups;

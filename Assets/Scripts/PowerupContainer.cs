@@ -41,6 +41,11 @@ public class PowerupContainer : MonoBehaviour
         if (Powerup != null)
         {
             nameText.text = Powerup.powerupName;
+
+            if (Powerup.negative)
+            {
+                nameText.color = Color.red;
+            }
         }
         
         var velocity = new Vector2(Random.Range(-horizontalVelocitySpread, horizontalVelocitySpread), verticalVelocity);

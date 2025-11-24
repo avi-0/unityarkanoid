@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebdb5bdaeb0b4ffcbfee8639dc0a09ad, type: 3}
-  m_Name: enlarge_paddle_powerup
+  m_Name: shrink_paddle_powerup
   m_EditorClassIdentifier: 
-  powerupName: grow
-  delta: 0.5
+  powerupName: shrink
+  negative: 1
+  delta: -0.5

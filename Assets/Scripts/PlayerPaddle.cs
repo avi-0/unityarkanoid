@@ -36,6 +36,9 @@ public class PlayerPaddle : MonoBehaviour
     [SerializeField]
     private float width = 1;
 
+    [SerializeField]
+    private float minLength = 1;
+
     [FormerlySerializedAs("TiltRangeMaxSpeed")]
     [SerializeField]
     private float tiltRangeMaxSpeed = 8;
@@ -56,10 +59,9 @@ public class PlayerPaddle : MonoBehaviour
         get => length;
         set
         {
-            length = value;
+            length = Mathf.Max(value, minLength);
 
             spriteRenderer.size = new Vector2(length, spriteRenderer.size.y);
-            //capsuleCollider.size = new Vector2(length, capsuleCollider.size.y);
             CreateShape();
         }
     }

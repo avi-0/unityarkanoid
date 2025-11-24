@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class EnlargePaddlePowerup : Powerup
+public class ChangePaddleSizePowerup : Powerup
 {
     [SerializeField]
     private float delta = 1f;
