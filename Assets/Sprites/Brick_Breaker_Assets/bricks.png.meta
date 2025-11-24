@@ -496,7 +496,7 @@ TextureImporter:
         width: 32
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -517,7 +517,7 @@ TextureImporter:
         width: 32
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -538,7 +538,7 @@ TextureImporter:
         width: 32
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -546,6 +546,69 @@ TextureImporter:
       bones: []
       spriteID: 2353fb669d4f5dd42adf4f6109ea5913
       internalID: -1441224747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bricks_6
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 31
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66788a32805f87742980a85cfc5630b5
+      internalID: 772367235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bricks_7
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 31
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 844024e89114ce34d86f1e9564c5d8ba
+      internalID: -132253066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bricks_8
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 31
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f34c2e20b5d0784c8edbaafe2ba30bf
+      internalID: 1911189132
       vertices: []
       indices: 
       edges: []
@@ -615,6 +678,7 @@ TextureImporter:
       bricks_57: 1071461133
       bricks_58: -2094133979
       bricks_59: -2041436500
+      bricks_6: 772367235
       bricks_60: 1353032292
       bricks_61: -1230131766
       bricks_62: -1242217823
@@ -625,6 +689,7 @@ TextureImporter:
       bricks_67: 1109109630
       bricks_68: 1379690685
       bricks_69: -381271269
+      bricks_7: -132253066
       bricks_70: -2053524483
       bricks_71: -528709867
       bricks_72: 1073129295

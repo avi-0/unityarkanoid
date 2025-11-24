@@ -52,8 +52,8 @@ public class Ball : MonoBehaviour
     {
         gameController.GlobalAudioSource.PlayOneShot(bounceSound, bounceSoundVolume);
 
-        // защита для случая, когда скорость почти горизонтальна и шарик очень долго скачет между стенами
-        var angleToX = Vector2.Angle(body.velocity, Vector2.right);
+        // защита для случая, когда скорость почти горизонтальна/вертикальна и шарик очень долго скачет между стенами
+        var angleToX = Vector2.SignedAngle(body.velocity, Vector2.right);
         angleToX = Math.Min(angleToX, 180 - angleToX);
         if (angleToX < minAngleToXAxis)
         {

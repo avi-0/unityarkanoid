@@ -11,17 +11,29 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private int actionQueueCooldownFrames = 1;
     
-    private Queue<Action> actionQueue = new();
+    private Queue<Func<bool>> actionQueue = new();
     private int actionQueueCooldown = 0;
 
+    public bool ActionQueueEmpty => actionQueue.Count == 0;
+    
     private void FixedUpdate()
     {
         actionQueueCooldown--;
         
         TryInvokeAction();
     }
-
+    
     public void QueueAction(Action action)
+    {
+        actionQueue.Enqueue(() =>
+        {
+            action.Invoke();
+
+            return true;
+        });
+    }
+
+    public void QueueAction(Func<bool> action)
     {
         actionQueue.Enqueue(action);
         TryInvokeAction();
@@ -32,8 +44,12 @@ public class GameController : MonoBehaviour
         if (actionQueueCooldown <= 0 && actionQueue.Count > 0)
         {
             var action = actionQueue.Dequeue();
-            action.Invoke();
-            actionQueueCooldown = actionQueueCooldownFrames;
+            var success = action.Invoke();
+
+            if (success)
+            {
+                actionQueueCooldown = actionQueueCooldownFrames;
+            }
         }
     }
 }
