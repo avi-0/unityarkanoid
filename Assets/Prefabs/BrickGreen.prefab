@@ -153,6 +153,8 @@ MonoBehaviour:
   debrisParticleRenderer: {fileID: 2195817783242186814}
   debrisSprite: {fileID: 2800000, guid: 23a7ddbd6144e19419282a0b1a89090e, type: 3}
   impactSound: {fileID: 8300000, guid: f9a04d3115778e948a5524f4b5e998f4, type: 3}
+  possiblePowerups:
+  - {fileID: 11400000, guid: 30838b1a154018f48a6453128bf79013, type: 2}
 --- !u!1 &4424118884550571760
 GameObject:
   m_ObjectHideFlags: 0

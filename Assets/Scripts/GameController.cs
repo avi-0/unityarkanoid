@@ -6,6 +6,9 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField]
+    public PlayerPaddle PlayerPaddle;
+    
+    [SerializeField]
     public AudioSource GlobalAudioSource;
 
     [SerializeField]
@@ -13,6 +16,9 @@ public class GameController : MonoBehaviour
     
     private Queue<Func<bool>> actionQueue = new();
     private int actionQueueCooldown = 0;
+    
+    [SerializeField]
+    private PowerupContainer powerupPrefab;
 
     public bool ActionQueueEmpty => actionQueue.Count == 0;
     
@@ -51,5 +57,11 @@ public class GameController : MonoBehaviour
                 actionQueueCooldown = actionQueueCooldownFrames;
             }
         }
+    }
+
+    public void SpawnPowerup(Vector2 position, Powerup powerup)
+    {
+        var container = Instantiate(powerupPrefab, new Vector3(position.x, position.y, 0f), Quaternion.identity, transform);
+        container.Setup(powerup);
     }
 }

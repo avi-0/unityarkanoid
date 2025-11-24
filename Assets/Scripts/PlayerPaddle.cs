@@ -51,7 +51,7 @@ public class PlayerPaddle : MonoBehaviour
     private float length;
     private float targetAngle;
 
-    private float Length
+    public float Length
     {
         get => length;
         set
