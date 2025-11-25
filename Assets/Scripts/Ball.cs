@@ -65,7 +65,7 @@ public class Ball : MonoBehaviour
         angleToX = Math.Min(angleToX, 180 - angleToX);
         if (angleToX < minAngleToXAxis)
         {
-            var angle = Random.Range(-bounceDeviationAngle, bounceDeviationAngle);
+            var angle = bounceDeviationAngle * Math.Sign(angleToX);
             body.velocity = Quaternion.AngleAxis(angle, Vector3.forward) * body.velocity;
         }
     }

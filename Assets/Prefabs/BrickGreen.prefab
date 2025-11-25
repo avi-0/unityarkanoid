@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4370096100944847886}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 2.0625, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -153,6 +153,7 @@ MonoBehaviour:
   debrisParticleRenderer: {fileID: 2195817783242186814}
   debrisSprite: {fileID: 2800000, guid: 23a7ddbd6144e19419282a0b1a89090e, type: 3}
   impactSound: {fileID: 8300000, guid: f9a04d3115778e948a5524f4b5e998f4, type: 3}
+  score: 10
   possiblePowerups:
   - {fileID: 11400000, guid: 30838b1a154018f48a6453128bf79013, type: 2}
   - {fileID: 11400000, guid: 09a6fa72032d7674c9a1b69d35d19238, type: 2}
