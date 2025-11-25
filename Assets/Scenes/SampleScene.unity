@@ -1297,6 +1297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPaddle: {fileID: 1447932482}
+  BallBaseSpeed: 15
+  BallMinSpeed: 9
   GlobalAudioSource: {fileID: 637359263}
   actionQueueCooldownFrames: 4
   powerupPrefab: {fileID: 5780887046511003945, guid: e20bc873077d01240acf18482a2d85d5, type: 3}
@@ -1909,7 +1911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 1058949702}
-  speed: 16
+  SpeedChangeAcceleration: 10
   wallsLayerMask:
     serializedVersion: 2
     m_Bits: 768

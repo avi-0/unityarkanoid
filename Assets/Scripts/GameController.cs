@@ -7,6 +7,12 @@ public class GameController : MonoBehaviour
 {
     [SerializeField]
     public PlayerPaddle PlayerPaddle;
+
+    [SerializeField]
+    public float BallBaseSpeed = 1.0f;
+
+    [SerializeField]
+    public float BallMinSpeed = 1.0f;
     
     [SerializeField]
     public AudioSource GlobalAudioSource;
@@ -20,8 +26,24 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private PowerupContainer powerupPrefab;
 
+    private float ballSpeed = 1f;
+
+    public float BallSpeed
+    {
+        get => ballSpeed;
+        set
+        {
+            ballSpeed = Math.Max(value, BallMinSpeed);
+        }
+    }
+
     public bool ActionQueueEmpty => actionQueue.Count == 0;
-    
+
+    private void Start()
+    {
+        BallSpeed = BallBaseSpeed;
+    }
+
     private void FixedUpdate()
     {
         actionQueueCooldown--;

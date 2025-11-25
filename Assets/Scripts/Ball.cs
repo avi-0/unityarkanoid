@@ -13,7 +13,7 @@ public class Ball : MonoBehaviour
     private Rigidbody2D body;
 
     [SerializeField]
-    private float speed = 4;
+    private float SpeedChangeAcceleration = 1f;
 
     [SerializeField]
     private LayerMask wallsLayerMask;
@@ -37,6 +37,8 @@ public class Ball : MonoBehaviour
 
     private void FixedUpdate()
     {
+        var speed = body.velocity.magnitude;
+        speed = Mathf.MoveTowards(speed, gameController.BallSpeed, SpeedChangeAcceleration * Time.fixedDeltaTime);
         body.velocity = body.velocity.normalized * speed;
     }
 
@@ -51,6 +53,8 @@ public class Ball : MonoBehaviour
     private void Bounced()
     {
         gameController.GlobalAudioSource.PlayOneShot(bounceSound, bounceSoundVolume);
+
+        body.velocity = body.velocity.normalized * gameController.BallSpeed;
 
         // защита для случая, когда скорость почти горизонтальна/вертикальна и шарик очень долго скачет между стенами
         var angleToX = Vector2.SignedAngle(body.velocity, Vector2.right);

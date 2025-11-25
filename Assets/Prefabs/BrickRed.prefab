@@ -155,6 +155,7 @@ MonoBehaviour:
   impactSound: {fileID: 8300000, guid: f9a04d3115778e948a5524f4b5e998f4, type: 3}
   possiblePowerups:
   - {fileID: 11400000, guid: 69b7ae064bb32a64eafe23ac6a041aa8, type: 2}
+  - {fileID: 11400000, guid: d96f3de927d7986489187d2fcf625602, type: 2}
 --- !u!1 &4424118884550571760
 GameObject:
   m_ObjectHideFlags: 0
