@@ -90,8 +90,6 @@ public class PlayerPaddle : MonoBehaviour
     void Start()
     {
         Length = defaultLength;
-        
-        Cursor.visible = false;
     }
     
     void FixedUpdate()

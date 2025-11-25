@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -39,6 +41,14 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private TMP_Text ballsText;
 
+    [SerializeField]
+    private RectTransform restartPanel;
+
+    [SerializeField]
+    private Button restartButton;
+
+    private bool isGameOver = false;
+
     private List<Ball> balls = new();
     private float ballSpeed = 1f;
 
@@ -64,9 +74,12 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        BallSpeed = BallBaseSpeed;
+        restartButton.onClick.AddListener(OnRestartButtonClicked);
         
+        BallSpeed = BallBaseSpeed;
         SpawnBall(defaultBallPosition, Vector2.down, BallMinSpeed);
+        
+        Cursor.visible = false;
     }
 
     private void FixedUpdate()
@@ -74,6 +87,11 @@ public class GameController : MonoBehaviour
         actionQueueCooldown--;
         
         TryInvokeAction();
+
+        if (!isGameOver && balls.Count == 0)
+        {
+            GameOver();
+        }
     }
 
     public void SpawnBall(Vector2 position, Vector2 direction, float? speed = null)
@@ -113,6 +131,19 @@ public class GameController : MonoBehaviour
         scoreText.text = score.ToString();
         speedText.text = ballSpeed.ToString();
         ballsText.text = balls.Count.ToString();
+    }
+
+    private void OnRestartButtonClicked()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void GameOver()
+    {
+        isGameOver = true;
+        
+        restartPanel.gameObject.SetActive(true);
+        Cursor.visible = true;
     }
     
     public void QueueAction(Action action)
