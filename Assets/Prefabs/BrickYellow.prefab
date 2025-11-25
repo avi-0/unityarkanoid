@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2866162387855614346}
   - component: {fileID: 3906178065585279850}
   - component: {fileID: 7724553686969547736}
+  - component: {fileID: 1857290652900953618}
   m_Layer: 6
   m_Name: BrickYellow
   m_TagString: Untagged
@@ -131,6 +132,7 @@ MonoBehaviour:
   debrisParticleRenderer: {fileID: 2195817783242186814}
   debrisSprite: {fileID: 2800000, guid: b6088ade92324a54ab471ea0b6ba6b19, type: 3}
   impactSound: {fileID: 8300000, guid: f9a04d3115778e948a5524f4b5e998f4, type: 3}
+  score: 10
 --- !u!95 &7724553686969547736
 Animator:
   serializedVersion: 5
@@ -152,6 +154,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1857290652900953618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370096100944847886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 2
 --- !u!1 &5895764274700324770
 GameObject:
   m_ObjectHideFlags: 0

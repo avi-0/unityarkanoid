@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2866162387855614346}
   - component: {fileID: 7724553686969547736}
   - component: {fileID: 4951069911394589003}
+  - component: {fileID: 3740313804197204920}
   m_Layer: 6
   m_Name: BrickRed
   m_TagString: Untagged
@@ -153,9 +154,23 @@ MonoBehaviour:
   debrisParticleRenderer: {fileID: 2195817783242186814}
   debrisSprite: {fileID: 2800000, guid: e5324f9bcf49e8c47b6468be8d57a66d, type: 3}
   impactSound: {fileID: 8300000, guid: f9a04d3115778e948a5524f4b5e998f4, type: 3}
+  score: 10
   possiblePowerups:
   - {fileID: 11400000, guid: 69b7ae064bb32a64eafe23ac6a041aa8, type: 2}
   - {fileID: 11400000, guid: d96f3de927d7986489187d2fcf625602, type: 2}
+--- !u!114 &3740313804197204920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370096100944847886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 2
 --- !u!1 &4424118884550571760
 GameObject:
   m_ObjectHideFlags: 0

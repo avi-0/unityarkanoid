@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2866162387855614346}
   - component: {fileID: 7724553686969547736}
   - component: {fileID: 4951069911394589003}
+  - component: {fileID: 8741767335037011177}
   m_Layer: 6
   m_Name: BrickGreen
   m_TagString: Untagged
@@ -158,6 +159,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 30838b1a154018f48a6453128bf79013, type: 2}
   - {fileID: 11400000, guid: 09a6fa72032d7674c9a1b69d35d19238, type: 2}
   - {fileID: 11400000, guid: 1b99e0c2fe96d154e8286c3b900e668d, type: 2}
+--- !u!114 &8741767335037011177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370096100944847886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 2
 --- !u!1 &4424118884550571760
 GameObject:
   m_ObjectHideFlags: 0
