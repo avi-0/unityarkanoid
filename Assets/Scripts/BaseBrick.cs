@@ -33,6 +33,9 @@ public class BaseBrick : MonoBehaviour
 
     [SerializeField]
     private AudioClip impactSound;
+    
+    [SerializeField]
+    private int score = 10;
 
     
     private int health;
@@ -79,12 +82,13 @@ public class BaseBrick : MonoBehaviour
 
         if (Health <= 0)
         {
+            gameController.AddScore(score);
+            OnDestroyed();
+            
             debrisParticleSystem.transform.parent = null;
 
             var main = debrisParticleSystem.main;
             main.stopAction = ParticleSystemStopAction.Destroy;
-            
-            OnDestroyed();
 
             beingDestroyed = true;
             Destroy(gameObject);

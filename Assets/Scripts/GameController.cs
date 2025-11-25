@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -29,8 +30,19 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private Vector2 defaultBallPosition;
 
+    [SerializeField]
+    private TMP_Text scoreText;
+    
+    [SerializeField]
+    private TMP_Text speedText;
+
+    [SerializeField]
+    private TMP_Text ballsText;
+
     private List<Ball> balls = new();
     private float ballSpeed = 1f;
+
+    private int score = 0;
     
     private Queue<Func<bool>> actionQueue = new();
     private int actionQueueCooldown = 0;
@@ -43,6 +55,8 @@ public class GameController : MonoBehaviour
         set
         {
             ballSpeed = Math.Max(value, BallMinSpeed);
+            
+            UpdateUi();
         }
     }
 
@@ -64,10 +78,12 @@ public class GameController : MonoBehaviour
 
     public void SpawnBall(Vector2 position, Vector2 direction, float? speed = null)
     {
-        var ball = Instantiate(ballPrefab, transform);
+        var ball = Instantiate(ballPrefab, position, Quaternion.identity, transform);
         ball.Setup(position, direction, speed);
 
         balls.Add(ball);
+        
+        UpdateUi();
     }
 
     public void DestroyBall(Ball ball)
@@ -75,6 +91,28 @@ public class GameController : MonoBehaviour
         balls.Remove(ball);
 
         Destroy(ball.gameObject);
+        
+        UpdateUi();
+    }
+    
+    public void SpawnPowerup(Vector2 position, Powerup powerup)
+    {
+        var container = Instantiate(powerupPrefab, position, Quaternion.identity, transform);
+        container.Setup(powerup);
+    }
+
+    public void AddScore(int delta)
+    {
+        score += delta;
+        
+        UpdateUi();
+    }
+
+    private void UpdateUi()
+    {
+        scoreText.text = score.ToString();
+        speedText.text = ballSpeed.ToString();
+        ballsText.text = balls.Count.ToString();
     }
     
     public void QueueAction(Action action)
@@ -105,11 +143,5 @@ public class GameController : MonoBehaviour
                 actionQueueCooldown = actionQueueCooldownFrames;
             }
         }
-    }
-
-    public void SpawnPowerup(Vector2 position, Powerup powerup)
-    {
-        var container = Instantiate(powerupPrefab, new Vector3(position.x, position.y, 0f), Quaternion.identity, transform);
-        container.Setup(powerup);
     }
 }
