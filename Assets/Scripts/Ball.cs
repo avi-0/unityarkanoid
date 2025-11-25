@@ -29,10 +29,14 @@ public class Ball : MonoBehaviour
 
     [SerializeField]
     private float minAngleToXAxis = 5f;
+
+    public Vector2 Position => body.position;
+    public Vector2 Velocity => body.velocity;
     
-    void Start()
+    public void Setup(Vector2 position, Vector2 direction, float? speed = null)
     {
-        body.velocity = new Vector2(1, 1);
+        body.position = position;
+        body.velocity = direction.normalized * (speed ?? gameController.BallSpeed);
     }
 
     private void FixedUpdate()

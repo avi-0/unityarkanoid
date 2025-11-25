@@ -20,13 +20,22 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private int actionQueueCooldownFrames = 1;
     
-    private Queue<Func<bool>> actionQueue = new();
-    private int actionQueueCooldown = 0;
-    
     [SerializeField]
     private PowerupContainer powerupPrefab;
 
+    [SerializeField]
+    private Ball ballPrefab;
+
+    [SerializeField]
+    private Vector2 defaultBallPosition;
+
+    private List<Ball> balls = new();
     private float ballSpeed = 1f;
+    
+    private Queue<Func<bool>> actionQueue = new();
+    private int actionQueueCooldown = 0;
+
+    public IEnumerable<Ball> Balls => balls;
 
     public float BallSpeed
     {
@@ -42,6 +51,8 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         BallSpeed = BallBaseSpeed;
+        
+        SpawnBall(defaultBallPosition, Vector2.down, BallMinSpeed);
     }
 
     private void FixedUpdate()
@@ -49,6 +60,21 @@ public class GameController : MonoBehaviour
         actionQueueCooldown--;
         
         TryInvokeAction();
+    }
+
+    public void SpawnBall(Vector2 position, Vector2 direction, float? speed = null)
+    {
+        var ball = Instantiate(ballPrefab, transform);
+        ball.Setup(position, direction, speed);
+
+        balls.Add(ball);
+    }
+
+    public void DestroyBall(Ball ball)
+    {
+        balls.Remove(ball);
+
+        Destroy(ball.gameObject);
     }
     
     public void QueueAction(Action action)

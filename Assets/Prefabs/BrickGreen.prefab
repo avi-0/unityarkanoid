@@ -156,6 +156,7 @@ MonoBehaviour:
   possiblePowerups:
   - {fileID: 11400000, guid: 30838b1a154018f48a6453128bf79013, type: 2}
   - {fileID: 11400000, guid: 09a6fa72032d7674c9a1b69d35d19238, type: 2}
+  - {fileID: 11400000, guid: 1b99e0c2fe96d154e8286c3b900e668d, type: 2}
 --- !u!1 &4424118884550571760
 GameObject:
   m_ObjectHideFlags: 0
