@@ -15,14 +15,16 @@ public class ExplosiveBrick : BaseBrick
     
     [SerializeField]
     private float explosionSoundVolume;
+    
 
     private List<Collider2D> overlapColliderResults = new();
-
     private bool canExplode = true;
+    
 
     protected override bool CanBeDamaged => canExplode;
 
-    void FixedUpdate()
+    
+    private void FixedUpdate()
     {
         if (!canExplode && gameController.ActionQueueEmpty)
         {

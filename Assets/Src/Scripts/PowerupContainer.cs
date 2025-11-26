@@ -10,9 +10,6 @@ public class PowerupContainer : MonoBehaviour
 {
     [Inject]
     protected GameController gameController;
-    
-    [NonSerialized]
-    public Powerup Powerup;
 
     
     [SerializeField]
@@ -33,6 +30,10 @@ public class PowerupContainer : MonoBehaviour
     [SerializeField]
     private float horizontalVelocitySpread = 0f;
     
+    
+    [NonSerialized]
+    public Powerup Powerup;
+    
 
     public void Setup(Powerup powerup)
     {
@@ -52,7 +53,7 @@ public class PowerupContainer : MonoBehaviour
         body.AddForce(velocity, ForceMode2D.Impulse);
     }
     
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         body.AddForce(Vector2.down * gravity);
     }

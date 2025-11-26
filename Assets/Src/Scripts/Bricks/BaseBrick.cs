@@ -56,7 +56,7 @@ public class BaseBrick : MonoBehaviour
     protected virtual bool CanBeDamaged => true;
     
     
-    void Start()
+    private void Start()
     {
         Health = sprites.Count;
         

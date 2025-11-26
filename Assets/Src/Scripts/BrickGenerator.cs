@@ -19,11 +19,13 @@ public class BrickGenerator : MonoBehaviour
 
     [SerializeField]
     private float ScrollSpeed = 1f;
+    
 
     private int maxYGenerated = 0;
     private float yThreshold = 0;
     
-    void Start()
+    
+    private void Start()
     {
         yThreshold = transform.position.y;
         

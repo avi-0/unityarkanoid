@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     [Inject]
     private GameController gameController;
     
+    
     [SerializeField]
     private Rigidbody2D body;
 
@@ -29,9 +30,11 @@ public class Ball : MonoBehaviour
 
     [SerializeField]
     private float minAngleToXAxis = 5f;
+    
 
     public Vector2 Position => body.position;
     public Vector2 Velocity => body.velocity;
+    
     
     public void Setup(Vector2 position, Vector2 direction, float? speed = null)
     {

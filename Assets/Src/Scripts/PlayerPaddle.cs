@@ -48,9 +48,11 @@ public class PlayerPaddle : MonoBehaviour
     
     [SerializeField]
     private float tiltDamping = 8f;
+    
 
     private float length;
     private float targetAngle;
+    
 
     public float Length
     {
@@ -82,12 +84,12 @@ public class PlayerPaddle : MonoBehaviour
         polygonCollider.SetPath(0, vertices);
     }
     
-    void Start()
+    private void Start()
     {
         Length = defaultLength;
     }
     
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (Pointer.current != null)
         {

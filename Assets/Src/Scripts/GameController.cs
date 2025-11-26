@@ -50,19 +50,18 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     private Button restartButton;
+    
 
     private bool isGameOver = false;
-
     private List<Ball> balls = new();
     private float ballSpeed = 1f;
-
     private int score = 0;
-    
     private Queue<Func<bool>> actionQueue = new();
     private int actionQueueCooldown = 0;
 
+    
     public IEnumerable<Ball> Balls => balls;
-
+    
     public float BallSpeed
     {
         get => ballSpeed;
@@ -75,7 +74,8 @@ public class GameController : MonoBehaviour
     }
 
     public bool ActionQueueEmpty => actionQueue.Count == 0;
-
+    
+    
     private void Start()
     {
         Cursor.visible = false;
