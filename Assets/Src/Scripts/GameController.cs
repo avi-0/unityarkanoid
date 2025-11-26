@@ -18,6 +18,9 @@ public class GameController : MonoBehaviour
     public float BallMinSpeed = 1.0f;
     
     [SerializeField]
+    public float BallInitialSpeed = 1.0f;
+    
+    [SerializeField]
     public AudioSource GlobalAudioSource;
 
     [SerializeField]
@@ -77,7 +80,7 @@ public class GameController : MonoBehaviour
         restartButton.onClick.AddListener(OnRestartButtonClicked);
         
         BallSpeed = BallBaseSpeed;
-        SpawnBall(defaultBallPosition, Vector2.down, BallMinSpeed);
+        SpawnBall(defaultBallPosition, Vector2.down, BallInitialSpeed);
         
         Cursor.visible = false;
     }
