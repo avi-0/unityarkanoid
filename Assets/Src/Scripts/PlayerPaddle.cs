@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 public class PlayerPaddle : MonoBehaviour
@@ -20,16 +21,13 @@ public class PlayerPaddle : MonoBehaviour
 
     [SerializeField]
     private Transform spriteTransform;
-
-    [FormerlySerializedAs("MinX")]
+    
     [SerializeField]
     private float minX;
     
-    [FormerlySerializedAs("MaxX")]
     [SerializeField]
     private float maxX;
-
-    [FormerlySerializedAs("DefaultLength")]
+    
     [SerializeField]
     private float defaultLength = 2f;
     
@@ -41,16 +39,13 @@ public class PlayerPaddle : MonoBehaviour
 
     [SerializeField]
     private float minLength = 1f;
-
-    [FormerlySerializedAs("TiltRangeMaxSpeed")]
+    
     [SerializeField]
     private float tiltRangeMaxSpeed = 8f;
-
-    [FormerlySerializedAs("TiltRangeMaxAngleDegrees")]
+    
     [SerializeField]
     private float tiltRangeMaxAngleDegrees = 30f;
-
-    [FormerlySerializedAs("TiltDamping")]
+    
     [SerializeField]
     private float tiltDamping = 8f;
 
@@ -94,26 +89,29 @@ public class PlayerPaddle : MonoBehaviour
     
     void FixedUpdate()
     {
-        var screenMousePos = Input.mousePosition;
-        var mousePos = Camera.main.ScreenToWorldPoint(screenMousePos);
+        if (Pointer.current != null)
+        {
+            var screenPos = Pointer.current.position.value;
+            var pos = Camera.main.ScreenToWorldPoint(screenPos);
 
-        var min = minX + Length / 2;
-        var max = maxX - Length / 2;
-        var x = Mathf.Clamp(mousePos.x, min, max);
+            var min = minX + Length / 2;
+            var max = maxX - Length / 2;
+            var x = Mathf.Clamp(pos.x, min, max);
 
-        var prevPosition = body.position;
-        var position = new Vector2(x, body.position.y);
-        body.MovePosition(position);
+            var prevPosition = body.position;
+            var position = new Vector2(x, body.position.y);
+            body.MovePosition(position);
 
-        var velocity = (position - prevPosition) / Time.deltaTime;
-        var speed = Mathf.Clamp(velocity.x, -tiltRangeMaxSpeed, tiltRangeMaxSpeed);
-        var angle = math.remap(-tiltRangeMaxSpeed, tiltRangeMaxSpeed, -tiltRangeMaxAngleDegrees,
-            tiltRangeMaxAngleDegrees, speed);
+            var velocity = (position - prevPosition) / Time.deltaTime;
+            var speed = Mathf.Clamp(velocity.x, -tiltRangeMaxSpeed, tiltRangeMaxSpeed);
+            var angle = math.remap(-tiltRangeMaxSpeed, tiltRangeMaxSpeed, -tiltRangeMaxAngleDegrees,
+                tiltRangeMaxAngleDegrees, speed);
 
-        targetAngle = -angle;
-        var currentAngle = spriteTransform.rotation.eulerAngles.z;
-        currentAngle = Mathf.LerpAngle(targetAngle, currentAngle, Mathf.Exp(-tiltDamping * Time.deltaTime));
+            targetAngle = -angle;
+            var currentAngle = spriteTransform.rotation.eulerAngles.z;
+            currentAngle = Mathf.LerpAngle(targetAngle, currentAngle, Mathf.Exp(-tiltDamping * Time.deltaTime));
         
-        spriteTransform.rotation = Quaternion.Euler(0, 0, currentAngle);
+            spriteTransform.rotation = Quaternion.Euler(0, 0, currentAngle);
+        }
     }
 }

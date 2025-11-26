@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -77,12 +78,15 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
+#if UNITY_ANDROID
+        Application.targetFrameRate = 60;
+#endif
+        
         restartButton.onClick.AddListener(OnRestartButtonClicked);
         
         BallSpeed = BallBaseSpeed;
         SpawnBall(defaultBallPosition, Vector2.down, BallInitialSpeed);
-        
-        Cursor.visible = false;
     }
 
     private void FixedUpdate()
