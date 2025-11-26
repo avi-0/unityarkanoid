@@ -72,4 +72,9 @@ public class Ball : MonoBehaviour
             body.velocity = Quaternion.AngleAxis(angle, Vector3.forward) * body.velocity;
         }
     }
+
+    private void OnDestroy()
+    {
+        gameController.BallDestroyed(this);
+    }
 }

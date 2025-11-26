@@ -111,11 +111,9 @@ public class GameController : MonoBehaviour
         UpdateUi();
     }
 
-    public void DestroyBall(Ball ball)
+    public void BallDestroyed(Ball ball)
     {
         balls.Remove(ball);
-
-        Destroy(ball.gameObject);
         
         UpdateUi();
     }

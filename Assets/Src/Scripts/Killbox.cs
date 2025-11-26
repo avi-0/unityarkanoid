@@ -11,11 +11,6 @@ public class Killbox : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<Ball>() is Ball ball)
-        {
-            gameController.DestroyBall(ball);
-        } else {
-            Destroy(other.gameObject);
-        }
+        Destroy(other.gameObject);
     }
 }
